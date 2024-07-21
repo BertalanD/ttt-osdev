@@ -3,16 +3,19 @@ LD = ld.lld
 OBJCOPY = llvm-objcopy
 CFLAGS = -Wall -O2 -ffreestanding -nostdlib --target=aarch64-unknown-elf -mcpu=cortex-a72+nosimd
 
+CFILES = $(wildcard *.c)
+OFILES = $(CFILES:.c=.o)
+
 .DEFAULT_GOAL := kernel8.img
 
 boot.o: boot.S
 	$(CC) $(CFLAGS) -c boot.S -o boot.o
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c -o main.o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-kernel8.elf: boot.o main.o
-	$(LD) boot.o main.o -T link.ld -o kernel8.elf
+kernel8.elf: boot.o $(OFILES)
+	$(LD) boot.o $(OFILES) -T link.ld -o kernel8.elf
 
 kernel8.img: kernel8.elf
 	$(OBJCOPY) -O binary kernel8.elf kernel8.img
