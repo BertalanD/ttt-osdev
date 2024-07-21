@@ -1,7 +1,7 @@
 CC = clang
 LD = ld.lld
 OBJCOPY = llvm-objcopy
-CFLAGS = -Wall -O2 -ffreestanding -nostdlib --target=aarch64-unknown-elf -mcpu=cortex-a72+nosimd
+CFLAGS = -std=c23 -Wall -O2 -ffreestanding -nostdlib --target=aarch64-unknown-elf -mcpu=cortex-a72+nosimd
 
 CFILES = $(wildcard *.c)
 OFILES = $(CFILES:.c=.o)
