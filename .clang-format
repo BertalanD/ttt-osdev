@@ -1,0 +1,8 @@
+---
+AlignEscapedNewlines: Left
+BasedOnStyle: WebKit
+IndentPPDirectives: AfterHash
+InsertNewlineAtEOF: true
+LineEnding: LF
+QualifierAlignment: Right
+...
