@@ -22,7 +22,7 @@ kernel8.img: kernel8.elf
 
 .PHONY: run
 run: kernel8.img
-	qemu-system-aarch64 -machine raspi4b -cpu cortex-a72 -m 2G -kernel kernel8.img -serial stdio
+	qemu-system-aarch64 -machine raspi3b -cpu cortex-a53 -m 1G -kernel kernel8.img -serial stdio
 
 .PHONY: clean
 clean:
