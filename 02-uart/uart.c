@@ -21,7 +21,7 @@ struct registers {
 };
 
 // XXX: GPU mapping
-#define BASE_ADDR 0xfe201000
+#define BASE_ADDR 0x3F201000
 #define REGS (*(struct registers volatile*)BASE_ADDR)
 
 void uart_init(int baud)
